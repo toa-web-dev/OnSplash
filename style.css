@@ -1,0 +1,239 @@
+:root {
+    --max-width: 1300px;
+    --top--banner--height: 3rem;
+    --loading-bg--color: white;
+    --document--bg--color: white;
+    --tag--color: #f7f2fa;
+    --grid--top--column: 3;
+    --grid--gap: 2rem;
+    --modal--bg: rgba(0, 0, 0, 0.4);
+    --header--border-bottom: rgba(0, 0, 0, 0.4);
+    --rem--mobile: 12px;
+    --rem--tablet: 14px;
+    --rem--laptop: 16px;
+    --rem--desktop: 18px;
+}
+@font-face {
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff") format("woff");
+    font-family: "GowunDodum-Regular";
+    font-style: normal;
+    font-weight: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: var(--rem--desktop);
+    font-family: "GowunDodum-Regular";
+}
+
+/* 모달 스타일링 시작 */
+#modal {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: var(--modal--bg);
+}
+.modal__content {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 90vw;
+    height: 90vh;
+    padding: 0 0 2rem 0;
+    background-color: white;
+    border-radius: 0.5rem;
+}
+.modal__content * {
+    max-width: 100%;
+}
+
+.modal__figcap {
+    height: 3rem;
+    font-size: 1.5rem;
+}
+
+.modal__picture-wrapper {
+    height: calc(100% - 3rem);
+}
+
+.modal__picture-wrapper * {
+    object-fit: contain;
+    height: 100%;
+}
+
+/* 모달 스타일링 끝 */
+
+/* 헤더 스타일링 시작 */
+.top-banner {
+    width: 100%;
+    height: var(--top--banner--height);
+}
+
+.top-banner {
+    font-size: 1.3rem;
+}
+
+.top-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: var(--document--bg--color);
+    border-bottom: 1px solid var(--header--border-bottom);
+    font-size: 4rem;
+}
+.top-header__github-link {
+    align-self: baseline;
+    margin: 6px 0 0 6px;
+    font-size: 0.9rem;
+}
+.top-header__github-link a {
+    text-decoration: none;
+}
+.top-header__github-link img,
+.top-header__github-link span {
+    width: 30px;
+    vertical-align: middle;
+}
+
+.banner-content__keyword-list,
+.banner-content__keyword-list * {
+    margin: 0;
+}
+.banner-content__keyword-list {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 2rem;
+    max-width: 60vw;
+}
+
+.banner-content__keyword-item {
+    display: block;
+    font-size: 1.3rem;
+    white-space: nowrap;
+    list-style-type: none;
+}
+.banner-content__keyword-item sup {
+    align-self: start;
+    margin-left: 4px;
+}
+/* 헤더 스타일링 끝 */
+
+/* 메인 스타일링 시작 */
+.main {
+    margin-inline: auto;
+    max-width: var(--max-width);
+    background-color: var(--document--bg--color);
+}
+
+.main__banner {
+    height: 150px;
+}
+.main__banner-content {
+    width: 100%;
+    height: 100%;
+    font-size: 10rem;
+}
+
+.main__grid-container {
+    display: grid;
+    align-items: start;
+    column-gap: var(--grid--gap);
+    grid-template-columns: repeat(var(--grid--top--column), minmax(0, 1fr));
+    box-sizing: border-box;
+    max-width: 100vw;
+    padding: 0 48px;
+}
+
+.main__grid-column {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--grid--gap);
+}
+.main__grid-column * {
+    max-width: 100%;
+    box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.35);
+}
+
+/* 메인 스타일링 끝 */
+
+/* 커스텀 스타일 선언 시작 */
+
+.hidden {
+    display: none;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skeleton {
+    width: 100%;
+    height: 100%;
+    animation: loading 1.5s infinite;
+    background: linear-gradient(90deg, #e0e0e0 25%, #f8f8f8 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    border-radius: 1rem;
+}
+/* 커스텀 스타일 선언 끝 */
+
+@keyframes loading {
+    from {
+        background-position: 200% 0;
+    }
+
+    to {
+        background-position: -200% 0;
+    }
+}
+@media (max-width: 1024px) {
+    html {
+        font-size: var(--rem--laptop);
+    }
+}
+@media (max-width: 768px) {
+    :root {
+        --grid--top--column: 2;
+    }
+    html {
+        font-size: var(--rem--tablet);
+    }
+
+    .main__banner {
+        margin: 2rem 0;
+    }
+    .banner-content__keyword-list {
+        column-gap: 2.5rem;
+    }
+
+    .banner-content__keyword-item {
+        writing-mode: vertical-lr;
+        text-orientation: mixed;
+        display: flex;
+        justify-content: center;
+    }
+    .banner-content__keyword-item sup {
+        margin: 0 auto;
+        margin-top: 0.5rem;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 425px) {
+    :root {
+        --grid--top--column: 1;
+    }
+    html {
+        font-size: var(--rem--mobile);
+    }
+}
